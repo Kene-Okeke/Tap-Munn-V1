@@ -1,5 +1,6 @@
-import { logo } from "../assets/tap-phoneicon.png";
+import logo from "../assets/tap-phoneicon.png";
 import { Link } from "react-router-dom";
+import "../css/Login.css";
 
 function Login() {
   return (
@@ -8,7 +9,7 @@ function Login() {
         {/* header section - with icon and company name */}
         <div className="headerRow">
           <div className="iconContainer">
-            <img src={logo} alt="" />
+            <img className="tap-icon" src={logo} alt="" />
           </div>
           <div className="companyName">
             <h1>
@@ -28,7 +29,9 @@ function Login() {
         <div className="formContainer">
           <form>
             <div className="inputGroup">
-              <label htmlFor="email">EMAIL OR USERNAME</label>
+              <label className="emailoruser" htmlFor="email">
+                EMAIL&nbsp;OR&nbsp;USERNAME
+              </label>
               <input
                 type="text"
                 id="email"
@@ -36,18 +39,26 @@ function Login() {
               />
             </div>
             <div className="inputGroup">
-              <label htmlFor="password">PASSWORD</label>
+              <label className="password" htmlFor="password">
+                PASSWORD
+              </label>
               <input
                 type="password"
                 id="password"
                 placeholder="Enter your password"
               />
+              <span className="forgotPassword">Forgot password?</span>
             </div>
 
-            <button type="submit">Log in</button>
+            <button className="loginButton" type="submit">
+              Log in
+            </button>
 
-            <div>
-              New here? <Link to="/create-account">Create an account</Link>
+            <div className="newHere">
+              New here?{" "}
+              <Link className="createAccountLink" to="/create-account">
+                Create an account
+              </Link>
             </div>
           </form>
         </div>

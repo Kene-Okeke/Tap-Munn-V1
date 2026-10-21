@@ -1,0 +1,340 @@
+/* ============ PAGE ============ */
+.createAccountMainContainer {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 20px 22px 40px;
+  padding-top: max(20px, env(safe-area-inset-top));
+  padding-bottom: max(40px, env(safe-area-inset-bottom));
+  background: #f5f7fc;
+  color: #0b1330;
+  font-family: "Inter Variable", "Inter", system-ui, sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.createAccountMainContainer *,
+.createAccountMainContainer *::before,
+.createAccountMainContainer *::after {
+  box-sizing: border-box;
+}
+
+/* ============ BACK BUTTON (optional, from the design) ============ */
+.backButton {
+  align-self: flex-start;
+  width: 100%;
+  max-width: 420px;
+  margin-bottom: 18px;
+  display: flex;
+}
+
+.backButton a,
+.backButton button {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid #dde3f0;
+  background: #ffffff;
+  color: #0b1330;
+  font-size: 18px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* ============ HEADING ============ */
+.createAccountCont,
+.CreateformContainer {
+  width: 100%;
+  max-width: 420px;
+}
+
+.createAccountCont {
+  margin-bottom: 18px;
+}
+
+.createAccountCont h1 {
+  margin: 0 0 4px;
+  font-family: "Space Grotesk Variable", "Space Grotesk", system-ui, sans-serif;
+  font-size: clamp(24px, 7vw, 28px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #0a1f5c;
+}
+
+.createAccountCont h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #4a5578;
+}
+
+/* ============ FORM ============ */
+.CreateformContainer form {
+  display: flex;
+  flex-direction: column;
+}
+
+.accountinputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+/* labels: .username  .email  .password  .Country */
+.accountinputGroup label {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8a93b0;
+}
+
+/* your Country label wraps the select, so stack them */
+.Country {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.accountinputGroup input,
+.accountinputGroup select {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  border: 1.5px solid #dde3f0;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #0b1330;
+  font-family: "Inter Variable", "Inter", system-ui, sans-serif;
+  font-size: 16px; /* 16px stops iOS Safari zooming in on focus */
+  line-height: normal;
+  /* the select sits inside the label, so undo the label's caps and spacing */
+  text-transform: none;
+  letter-spacing: normal;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.accountinputGroup input::placeholder {
+  color: #8a93b0;
+}
+
+.accountinputGroup input:focus,
+.accountinputGroup select:focus {
+  outline: none;
+  border-color: #2b55d6;
+  box-shadow: 0 0 0 4px rgba(43, 85, 214, 0.15);
+}
+
+/* red border only after the user has typed something invalid */
+.accountinputGroup input:not(:placeholder-shown):invalid {
+  border-color: #c42b3b;
+}
+
+/* custom select arrow */
+.accountinputGroup select {
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 42px;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%238a93b0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+/* ============ TERMS CHECKBOX ============ */
+.agreeTermsContainer {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 6px 0 18px;
+}
+
+.agreeTermsContainer input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin: 1px 0 0;
+  border: 1.5px solid #c9cfdf;
+  border-radius: 6px;
+  background: #ffffff;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.agreeTermsContainer input[type="checkbox"]:checked {
+  background-color: #0f2f8f;
+  border-color: #0f2f8f;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E");
+  background-size: 14px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.agreeTermsContainer input[type="checkbox"]:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(43, 85, 214, 0.25);
+}
+
+.agreeTermsContainer label {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #4a5578;
+  cursor: pointer;
+}
+
+/* ============ CREATE ACCOUNT BUTTON ============ */
+.createAccountButton {
+  width: 100%;
+  height: 54px;
+  border: 0;
+  border-radius: 14px;
+  background: #ffc629;
+  color: #050f2e;
+  font-family: "Inter Variable", "Inter", system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    transform 0.05s ease;
+}
+
+.createAccountButton:hover {
+  background: #ffcf4d;
+}
+
+.createAccountButton:active {
+  background: #e5a800;
+  transform: translateY(1px);
+}
+
+.createAccountButton:focus-visible {
+  outline: 3px solid #2b55d6;
+  outline-offset: 2px;
+}
+
+.createAccountButton:disabled {
+  background: #c9cfdf;
+  color: #ffffff;
+  cursor: not-allowed;
+}
+
+/* ============ "Already Playing? Log in" ============ */
+.AlreadyPlaying {
+  display: block;
+  margin-top: 14px;
+  text-align: center;
+  font-size: 13px;
+  color: #4a5578;
+}
+
+.LoginforCreate {
+  font-weight: 700;
+  color: #0f2f8f;
+  text-decoration: none;
+}
+
+.LoginforCreate:hover {
+  text-decoration: underline;
+}
+
+/* ============ RESPONSIVE ============ */
+
+/* very small phones (iPhone SE, 320px) */
+@media (max-width: 359px) {
+  .createAccountMainContainer {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .createAccountCont h3 {
+    font-size: 13px;
+  }
+  .agreeTermsContainer label {
+    font-size: 12.5px;
+  }
+}
+
+/* large phones and small tablets: a bit more breathing room */
+@media (min-width: 480px) {
+  .createAccountMainContainer {
+    padding-top: 40px;
+  }
+  .createAccountCont {
+    margin-bottom: 22px;
+  }
+}
+
+/* tablet and up: the form becomes a centred card */
+@media (min-width: 768px) {
+  .createAccountMainContainer {
+    padding: 64px 24px 56px;
+    justify-content: flex-start;
+  }
+
+  .createAccountCont,
+  .CreateformContainer,
+  .backButton {
+    max-width: 440px;
+  }
+
+  .CreateformContainer {
+    padding: 28px;
+    background: #ffffff;
+    border: 1px solid #dde3f0;
+    border-radius: 16px;
+    box-shadow: 0 1px 2px rgba(11, 19, 48, 0.04);
+  }
+
+  .inputGroup input,
+  .inputGroup select {
+    font-size: 15px; /* matches the design on desktop, where there is no iOS zoom */
+  }
+
+  .createAccountCont h1 {
+    font-size: 30px;
+  }
+}
+
+/* large desktops: keep the card centred and a little lower */
+@media (min-width: 1200px) {
+  .createAccountMainContainer {
+    padding-top: 88px;
+  }
+}
+
+/* phones in landscape: short screens, tighten vertical spacing */
+@media (max-height: 520px) and (orientation: landscape) {
+  .createAccountMainContainer {
+    padding-top: 16px;
+    padding-bottom: 24px;
+  }
+  .inputGroup {
+    margin-bottom: 10px;
+  }
+  .inputGroup input,
+  .inputGroup select {
+    height: 44px;
+  }
+}
+
+/* respect reduced-motion settings */
+@media (prefers-reduced-motion: reduce) {
+  .createAccountMainContainer * {
+    transition: none !important;
+  }
+}

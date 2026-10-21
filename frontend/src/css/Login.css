@@ -1,0 +1,134 @@
+.loginMainContainer {
+  background-color: #f5f7fc;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 30px;
+  padding-top: 80px;
+  font-family: "Inter Variable", sans-serif;
+}
+
+.tap-icon {
+  width: 29px;
+  height: 29px;
+}
+
+.headerRow {
+  display: flex;
+  gap: 8px;
+  padding-bottom: 8.5px;
+}
+
+.companyName {
+  margin-top: -12px;
+  color: #0a1f5c;
+}
+
+.companyName h1 {
+  font-size: 20px;
+}
+
+.welcomeSection {
+  margin-top: -20px;
+  gap: 0px;
+}
+
+.welcomeSection h1 {
+  color: #0a1f5c;
+  padding-bottom: 16px;
+  font-weight: 600;
+  font-size: 25px;
+}
+
+.welcomeSection h3 {
+  margin-top: -25px;
+  font-weight: 350;
+  color: #4a5578;
+  font-size: 13px;
+  font-family: "Inter Variable", sans-serif;
+  line-height: 0.5;
+  padding-bottom: 10px;
+}
+
+.yellowQuote {
+  color: #ffc629;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+}
+
+.inputGroup input {
+  width: 100%;
+  height: 43px;
+  box-sizing: border-box;
+  border: 1px solid #dde3f0;
+  border-radius: 9px;
+  outline: none;
+  box-shadow: none;
+  appearance: none;
+  -webkit-appearance: none;
+  font-family: "Inter Variable", sans-serif;
+}
+
+.emailoruser {
+  color: #8a93b0;
+  word-spacing: 6px;
+  font-weight: 300;
+  font-size: 11px;
+  padding-bottom: 5px;
+}
+
+.password {
+  color: #8a93b0;
+  word-spacing: 6px;
+  font-weight: 300;
+  font-size: 11px;
+  padding-bottom: 5px;
+}
+
+.inputGroup input::placeholder {
+  padding-left: 5px;
+  font-family: "Inter Variable", sans-serif;
+}
+
+.forgotPassword {
+  padding-top: 7px;
+  display: flex;
+  justify-content: right;
+  color: #0f2f8f;
+  font-weight: 550;
+  font-size: 13px;
+  padding-bottom: 7px;
+}
+.loginButton {
+  width: 100%;
+  height: 43px;
+  box-sizing: border-box;
+  border-radius: 9px;
+  border: none;
+  background-color: #0f2f8f;
+  color: white;
+  font-size: 15px;
+  font-family: "Inter Variable", sans-serif;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.newHere {
+  padding-top: 13px;
+  font-weight: 550;
+  color: #8a93b0;
+  font-size: 13px;
+  display: flex;
+  justify-content: center;
+}
+
+.createAccountLink {
+  text-decoration: none;
+  color: #0f2f8f;
+  padding-left: 5px;
+}

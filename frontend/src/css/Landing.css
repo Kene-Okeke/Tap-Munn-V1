@@ -1,0 +1,868 @@
+/* ============ BASE ============ */
+.mainLandingContainer {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: #ffffff;
+  color: #0b1330;
+  font-family: "Inter Variable", "Inter", system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+.mainLandingContainer *,
+.mainLandingContainer *::before,
+.mainLandingContainer *::after {
+  box-sizing: border-box;
+}
+
+.mainLandingContainer h1,
+.mainLandingContainer h3,
+.mainLandingContainer p {
+  margin: 0;
+}
+
+/* desktop-only pieces are hidden on phones */
+.desktopNav,
+.gamePreview,
+.topPlayers,
+.browserBadge,
+.seeHow {
+  display: none;
+}
+
+/* ============ COINS (floating) ============ */
+.coin {
+  position: absolute;
+  display: block;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 28% 24%,
+      rgba(255, 255, 255, 0.65) 0,
+      rgba(255, 255, 255, 0) 26%
+    ),
+    linear-gradient(135deg, #ffe78f 0%, #ffc629 50%, #de9a00 100%);
+  box-shadow: inset 0 0 0 1.5px rgba(184, 122, 0, 0.55);
+  transform: rotate(var(--rot, 0deg));
+  animation: coinFloat var(--dur, 6s) ease-in-out var(--delay, 0s) infinite;
+  will-change: transform;
+}
+
+.coin::before {
+  content: "";
+  position: absolute;
+  inset: 13%;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 2px rgba(184, 122, 0, 0.45);
+}
+
+.coin::after {
+  content: "";
+  position: absolute;
+  inset: 38%;
+  border-radius: 50%;
+  background: rgba(184, 122, 0, 0.38);
+}
+
+@keyframes coinFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--rot, 0deg));
+  }
+  50% {
+    transform: translateY(-12px) rotate(calc(var(--rot, 0deg) + 8deg));
+  }
+}
+
+/* ---- hero coins (phone) ---- */
+.heroCoin1 {
+  left: 4%;
+  top: 8%;
+  width: 24px;
+  --rot: -12deg;
+  --dur: 6s;
+  --delay: 0s;
+  opacity: 0.9;
+}
+.heroCoin2 {
+  left: 56%;
+  top: 2%;
+  width: 30px;
+  --rot: 14deg;
+  --dur: 7s;
+  --delay: -2s;
+  opacity: 0.8;
+}
+.heroCoin3 {
+  left: 30%;
+  top: 42%;
+  width: 20px;
+  --rot: 8deg;
+  --dur: 5.5s;
+  --delay: -1s;
+  opacity: 0.7;
+}
+.heroCoin4 {
+  left: 72%;
+  top: 38%;
+  width: 26px;
+  --rot: -18deg;
+  --dur: 6.5s;
+  --delay: -3s;
+  opacity: 0.9;
+}
+.heroCoin5 {
+  left: 8%;
+  top: 64%;
+  width: 32px;
+  --rot: 20deg;
+  --dur: 7.5s;
+  --delay: -4s;
+  opacity: 0.8;
+}
+.heroCoin6 {
+  left: 48%;
+  top: 70%;
+  width: 22px;
+  --rot: -6deg;
+  --dur: 6s;
+  --delay: -2.5s;
+  opacity: 0.9;
+}
+.heroCoin7 {
+  left: 82%;
+  top: 72%;
+  width: 18px;
+  --rot: 12deg;
+  --dur: 5s;
+  --delay: -1.5s;
+  opacity: 0.7;
+}
+
+/* ---- preview coins (desktop) ---- */
+.previewCoin1 {
+  left: 6%;
+  top: 20%;
+  width: 40px;
+  --rot: -14deg;
+  --dur: 7s;
+  --delay: 0s;
+  opacity: 0.9;
+}
+.previewCoin2 {
+  left: 72%;
+  top: 14%;
+  width: 52px;
+  --rot: 12deg;
+  --dur: 6.5s;
+  --delay: -1.5s;
+  opacity: 0.95;
+}
+.previewCoin3 {
+  left: 40%;
+  top: 34%;
+  width: 34px;
+  --rot: 8deg;
+  --dur: 5.5s;
+  --delay: -3s;
+  opacity: 0.8;
+}
+.previewCoin4 {
+  left: 84%;
+  top: 46%;
+  width: 30px;
+  --rot: -10deg;
+  --dur: 6s;
+  --delay: -2s;
+  opacity: 0.7;
+}
+.previewCoin5 {
+  left: 18%;
+  top: 52%;
+  width: 48px;
+  --rot: 18deg;
+  --dur: 7.5s;
+  --delay: -4s;
+  opacity: 0.9;
+}
+.previewCoin6 {
+  left: 56%;
+  top: 62%;
+  width: 42px;
+  --rot: -6deg;
+  --dur: 6s;
+  --delay: -2.5s;
+  opacity: 0.95;
+}
+.previewCoin7 {
+  left: 8%;
+  top: 80%;
+  width: 30px;
+  --rot: 10deg;
+  --dur: 5s;
+  --delay: -1s;
+  opacity: 0.6;
+}
+.previewCoin8 {
+  left: 76%;
+  top: 76%;
+  width: 44px;
+  --rot: -16deg;
+  --dur: 6.8s;
+  --delay: -3.5s;
+  opacity: 0.85;
+}
+.previewCoin9 {
+  left: 34%;
+  top: 82%;
+  width: 26px;
+  --rot: 14deg;
+  --dur: 5.2s;
+  --delay: -0.5s;
+  opacity: 0.7;
+}
+.previewCoin10 {
+  left: 60%;
+  top: 26%;
+  width: 24px;
+  --rot: -4deg;
+  --dur: 6.2s;
+  --delay: -2.2s;
+  opacity: 0.6;
+}
+
+/* ============ MOBILE NAV ============ */
+.mobileNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  padding-top: max(10px, env(safe-area-inset-top));
+}
+
+.iconAndName {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.iconAndName img {
+  display: block;
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+}
+
+.iconAndName h1 {
+  font-family: "Space Grotesk Variable", "Space Grotesk", system-ui, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #0a1f5c;
+}
+
+.yellowQuoteLanding {
+  color: #e5a800;
+}
+
+.mobileMenuCont {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dde3f0;
+  border-radius: 10px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.mobileMenuLanding {
+  display: block;
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+/* ============ HERO CARD ============ */
+.landingCard {
+  position: relative;
+  overflow: hidden;
+  margin: 6px 14px;
+  padding: 24px 20px 22px;
+  min-height: 430px;
+  border-radius: 24px;
+  background: linear-gradient(160deg, #0a1f5c 0%, #0f2f8f 100%);
+  color: #ffffff;
+}
+
+.heroCoins {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  width: 150px;
+  height: 112px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.tapAndFiveContainer,
+.startAndLogin {
+  position: relative;
+  z-index: 1;
+}
+
+.tapBeatClimb h1 {
+  font-family: "Space Grotesk Variable", "Space Grotesk", system-ui, sans-serif;
+  font-size: clamp(32px, 10vw, 38px);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+}
+
+.tapBeatClimb .yellowClimbText {
+  color: #ffc629;
+}
+
+.paragraph {
+  margin-top: 12px;
+}
+
+.paragraph p {
+  max-width: 290px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #c7d4f8;
+}
+
+.startAndLogin {
+  margin-top: 18px;
+}
+
+.startPlaying,
+.logIn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 14px;
+  transition:
+    background-color 0.15s ease,
+    transform 0.05s ease;
+}
+
+.startPlaying {
+  height: 54px;
+  border: 0;
+  background: #ffc629;
+  color: #050f2e;
+  font-size: 16px;
+}
+
+.startPlaying:hover {
+  background: #ffcf4d;
+}
+.startPlaying:active {
+  background: #e5a800;
+  transform: translateY(1px);
+}
+
+.logIn {
+  height: 48px;
+  margin-top: 10px;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  background: transparent;
+  color: #ffffff;
+  font-size: 15px;
+}
+
+.logIn:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.startPlaying:focus-visible,
+.logIn:focus-visible,
+.seeHow:focus-visible {
+  outline: 3px solid #9db4f5;
+  outline-offset: 2px;
+}
+
+.earningsParagraph {
+  max-width: 190px;
+  margin-top: 10px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #9db4f5;
+}
+
+/* ============ STEPS ============ */
+.numberAndAction {
+  padding: 10px 20px 32px;
+}
+
+.numberndAction {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+}
+
+.numberText {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #ffc629;
+  color: #050f2e;
+  font-family: "Space Grotesk Variable", "Space Grotesk", system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.columnSection h1 {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #0b1330;
+}
+
+.columnSection h3 {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #4a5578;
+}
+
+/* ============ SMALL PHONES ============ */
+@media (max-width: 359px) {
+  .mobileNav {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .landingCard {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .numberAndAction {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .heroCoins {
+    width: 100px;
+  }
+  .earningsParagraph {
+    max-width: 150px;
+  }
+}
+
+/* ============ LARGE PHONES / SMALL TABLETS (still mobile layout) ============ */
+@media (min-width: 480px) and (max-width: 767px) {
+  .landingCard {
+    margin: 10px 24px;
+    padding: 32px 28px;
+  }
+  .tapBeatClimb h1 {
+    font-size: 44px;
+  }
+  .paragraph p,
+  .earningsParagraph {
+    max-width: 340px;
+  }
+  .heroCoins {
+    width: 190px;
+    height: 160px;
+  }
+  .earningsParagraph {
+    max-width: 250px;
+  }
+  .numberAndAction {
+    padding: 14px 28px 40px;
+  }
+}
+
+/* ============ DESKTOP (768px and up) ============ */
+@media (min-width: 768px) {
+  .mainLandingContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobileNav {
+    display: none;
+  }
+
+  /* --- desktop nav --- */
+  .desktopNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    padding: 0 clamp(24px, 3.75vw, 72px);
+    border-bottom: 1px solid #dde3f0;
+    background: #ffffff;
+  }
+
+  .desktopNav .iconAndName {
+    gap: 12px;
+  }
+  .desktopNav .iconAndName img {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+  }
+  .desktopNav .iconAndName h1 {
+    font-size: 20px;
+  }
+
+  .desktopLinks {
+    display: flex;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .desktopLinks a {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4a5578;
+    text-decoration: none;
+  }
+
+  .desktopLinks a:hover {
+    color: #0f2f8f;
+  }
+
+  .desktopAuth {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .desktopLogin,
+  .desktopSignup {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    font-size: 14.5px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .desktopLogin {
+    padding: 0 16px;
+    color: #0f2f8f;
+  }
+  .desktopLogin:hover {
+    background: #f2f5fd;
+  }
+  .desktopSignup {
+    padding: 0 20px;
+    background: #ffc629;
+    color: #050f2e;
+  }
+  .desktopSignup:hover {
+    background: #ffcf4d;
+  }
+
+  /* --- hero becomes a full-width two-column band --- */
+  .landingCard {
+    margin: 0;
+    padding: 50px clamp(24px, 3.75vw, 72px);
+    min-height: 430px;
+    flex: 1 0 auto;
+    border-radius: 0;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-areas:
+      "copy preview"
+      "actions preview";
+    grid-template-rows: auto auto;
+    column-gap: 40px;
+    align-content: center;
+  }
+
+  .heroCoins {
+    display: none;
+  }
+
+  .tapAndFiveContainer {
+    grid-area: copy;
+    align-self: end;
+  }
+  .startAndLogin {
+    grid-area: actions;
+    align-self: start;
+    margin-top: 26px;
+  }
+
+  .browserBadge {
+    display: inline-flex;
+    align-items: center;
+    height: 24px;
+    padding: 0 10px;
+    border-radius: 12px;
+    background: rgba(255, 198, 41, 0.16);
+    color: #ffc629;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .tapBeatClimb {
+    margin-top: 18px;
+  }
+
+  .tapBeatClimb h1 {
+    font-size: clamp(40px, 5vw, 60px);
+    line-height: 1.02;
+  }
+
+  .paragraph {
+    margin-top: 18px;
+  }
+
+  .paragraph p {
+    max-width: 470px;
+    font-size: 16.5px;
+    line-height: 1.55;
+  }
+
+  .startAndLogin {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .startPlaying,
+  .seeHow {
+    width: auto;
+    height: 52px;
+    padding: 0 28px;
+    border-radius: 12px;
+    font-size: 16px;
+  }
+
+  .seeHow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    background: transparent;
+    color: #ffffff;
+    font-family: inherit;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+  }
+
+  .seeHow:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .logIn {
+    display: none;
+  }
+
+  .earningsParagraph {
+    flex-basis: 100%;
+    max-width: none;
+    margin-top: 2px;
+    font-size: 12px;
+  }
+
+  /* --- game preview with floating coins --- */
+  .gamePreview {
+    grid-area: preview;
+    grid-row: 1 / span 2;
+    position: relative;
+    display: block;
+    min-height: 340px;
+    overflow: hidden;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    z-index: 1;
+  }
+
+  .previewHud {
+    position: absolute;
+    top: 16px;
+    left: 18px;
+    right: 18px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    z-index: 2;
+    font-family:
+      "Space Grotesk Variable", "Space Grotesk", system-ui, sans-serif;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .previewTimer {
+    font-size: 28px;
+    color: #ffffff;
+  }
+  .previewScore {
+    font-size: 20px;
+    color: #ffc629;
+  }
+
+  /* --- steps become cards --- */
+  .numberAndAction {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    padding: 26px clamp(24px, 3.75vw, 72px);
+    scroll-margin-top: 16px;
+  }
+
+  .numberndAction {
+    display: block;
+    padding: 18px;
+    background: #ffffff;
+    border: 1px solid #dde3f0;
+    border-radius: 16px;
+    box-shadow: 0 1px 2px rgba(11, 19, 48, 0.04);
+  }
+
+  .numberText {
+    width: 34px;
+    height: 34px;
+    font-size: 16px;
+  }
+
+  .columnSection {
+    margin-top: 12px;
+  }
+
+  .columnSection h1 {
+    font-family:
+      "Space Grotesk Variable", "Space Grotesk", system-ui, sans-serif;
+    font-size: 19px;
+    letter-spacing: -0.01em;
+  }
+
+  .columnSection h3 {
+    margin-top: 4px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  /* --- top players card --- */
+  .topPlayers {
+    display: block;
+    padding: 16px 20px;
+    border-radius: 16px;
+    background: linear-gradient(160deg, #0a1f5c 0%, #0f2f8f 100%);
+    color: #ffffff;
+  }
+
+  .topPlayersLabel {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #9db4f5;
+  }
+
+  .playerRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .playerRow:last-child {
+    border-bottom: 0;
+  }
+
+  .playerRank {
+    width: 22px;
+    font-family:
+      "Space Grotesk Variable", "Space Grotesk", system-ui, sans-serif;
+    font-weight: 700;
+    color: #9db4f5;
+  }
+
+  .topPlayersLabel + .playerRow .playerRank {
+    color: #ffc629;
+  }
+
+  .playerAvatar {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #ffffff;
+    font-family:
+      "Space Grotesk Variable", "Space Grotesk", system-ui, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  .playerName {
+    flex: 1;
+    font-size: 13.5px;
+    font-weight: 600;
+  }
+
+  .playerScore {
+    font-family:
+      "Space Grotesk Variable", "Space Grotesk", system-ui, sans-serif;
+    font-size: 13.5px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* ============ TABLET (768-959px): keep the nav from crowding ============ */
+@media (min-width: 768px) and (max-width: 959px) {
+  .desktopLinks {
+    gap: 18px;
+  }
+  .desktopLinks li:nth-child(n + 3) {
+    display: none;
+  }
+  .desktopNav .iconAndName h1 {
+    font-size: 18px;
+  }
+}
+
+/* ============ WIDE DESKTOP: four steps in one row ============ */
+@media (min-width: 1100px) {
+  .numberAndAction {
+    grid-template-columns: 1fr 1fr 1fr 1.1fr;
+  }
+}
+
+/* ============ REDUCED MOTION ============ */
+@media (prefers-reduced-motion: reduce) {
+  .coin {
+    animation: none;
+  }
+  .startPlaying,
+  .logIn,
+  .seeHow {
+    transition: none;
+  }
+}

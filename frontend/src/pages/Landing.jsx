@@ -2,19 +2,14 @@ import "../css/Landing.css";
 import { Link } from "react-router-dom";
 import logo from "../assets/tap-phoneicon.png";
 import mobileMenu from "../assets/mobile-menu.png";
+import NameAndLogo from "../components/NameAndLogo.jsx";
 
 function Landing() {
   return (
     <section className="mainLandingContainer">
       {/* Mobile Navigation */}
       <nav className="mobileNav">
-        <div className="iconAndName">
-          <img src={logo} alt="" />
-
-          <h1>
-            Tap Mun<span className="yellowQuoteLanding">’</span>n
-          </h1>
-        </div>
+        <NameAndLogo />
 
         <div className="mobileMenuCont">
           <img

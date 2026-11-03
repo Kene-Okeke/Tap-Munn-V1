@@ -1,0 +1,1262 @@
+/* =========================================================
+   Dashboard - Tap Mun'n
+   Mobile first. Everything is scoped under .dashboardMainContainer
+   so it can't leak into other pages.
+   Breakpoints: 480 (wide phone) / 768 (tablet) / 1024 (desktop)
+   ========================================================= */
+
+.dashboardMainContainer,
+.dashboardMainContainer * {
+  box-sizing: border-box;
+}
+
+.dashboardMainContainer {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: #f5f7fc;
+  color: #0b1330;
+  font-family: "Inter Variable", system-ui, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 14px 16px calc(96px + env(safe-area-inset-bottom));
+}
+
+.dashboardMainContainer h1,
+.dashboardMainContainer h3,
+.dashboardMainContainer p {
+  margin: 0;
+}
+
+.dashboardMainContainer img {
+  display: block;
+}
+
+.dashboardMainContainer a {
+  text-decoration: none;
+}
+
+/* show / hide helpers (mobile text vs desktop text) */
+.dashboardMainContainer .desktopOnly {
+  display: none;
+}
+
+.dashboardMainContainer .mobileOnly {
+  display: inline;
+}
+
+/* things that only exist on tablet / desktop */
+.dashboardMainContainer .sideBar,
+.dashboardMainContainer .topBar,
+.dashboardMainContainer .scoresChart,
+.dashboardMainContainer .socialCard,
+.dashboardMainContainer .statNote,
+.dashboardMainContainer .yourRankLabel {
+  display: none;
+}
+
+.dashboardMainContainer .recentColumns.desktopRow {
+  display: none;
+}
+
+/* ---------- red count badge (shared) ---------- */
+.dashboardMainContainer .badge {
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #c42b3b;
+  color: #ffffff;
+  font-family: "Inter Variable", system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 18px;
+  text-align: center;
+}
+
+/* ---------- mobile header ---------- */
+.dashboardMainContainer .mobileHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboardMainContainer .iconsLeftSide {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dashboardMainContainer .messageContainer {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #dde3f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.dashboardMainContainer .messageContainer img {
+  width: 19px;
+  height: 19px;
+}
+
+.dashboardMainContainer .messageContainer .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  box-shadow: 0 0 0 2px #f5f7fc;
+}
+
+.dashboardMainContainer .welcomeName {
+  font-size: 13px;
+  color: #4a5578;
+}
+
+.dashboardMainContainer .welcomeName span {
+  font-weight: 700;
+  color: #0b1330;
+}
+
+/* ---------- columns ---------- */
+.dashboardMainContainer .dashContent,
+.dashboardMainContainer .dashLeft,
+.dashboardMainContainer .dashRight {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ---------- blue hero widget ---------- */
+.dashboardMainContainer .blueBackgroudWidget {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 18px 16px 16px;
+  border-radius: 18px;
+  background: linear-gradient(160deg, #0a1f5c 0%, #0f2f8f 100%);
+  color: #ffffff;
+}
+
+.dashboardMainContainer .blueBackgroudWidget > h1 {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 8px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.dashboardMainContainer .bignumberLeft {
+  position: relative;
+  z-index: 1;
+  font-family: "Space Grotesk Variable", sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.dashboardMainContainer .smallnumberLeft {
+  margin-left: 8px;
+  font-size: 20px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.dashboardMainContainer .clockAndReset {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 12px 0 16px;
+}
+
+.dashboardMainContainer .clock {
+  width: 13px;
+  height: 13px;
+  opacity: 0.75;
+}
+
+.dashboardMainContainer .clockAndReset h1 {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.dashboardMainContainer .timeLeft {
+  font-weight: 600;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+}
+
+.dashboardMainContainer .yellowPlaynow {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 12px;
+  background: #ffc629;
+  color: #050f2e;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    transform 0.1s ease;
+}
+
+.dashboardMainContainer .yellowPlaynow:hover {
+  background: #f5bb18;
+}
+
+.dashboardMainContainer .yellowPlaynow:active {
+  background: #e5a800;
+  transform: scale(0.98);
+}
+
+.dashboardMainContainer .yellowPlaynow:focus-visible {
+  outline: 3px solid #2b55d6;
+  outline-offset: 2px;
+}
+
+.dashboardMainContainer .yellowPlaynow img {
+  width: 14px;
+  height: 14px;
+}
+
+.dashboardMainContainer .yellowPlaynow h1 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #050f2e;
+}
+
+/* ---------- floating coins in the hero (CSS only) ---------- */
+.dashboardMainContainer .dashCoins {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.dashboardMainContainer .dashCoin {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffe08a, #ffc629 55%, #e5a800);
+  box-shadow: inset 0 0 0 2px rgba(217, 154, 0, 0.55);
+  animation: dashCoinFloat var(--dur, 6s) ease-in-out var(--delay, 0s) infinite;
+}
+
+.dashboardMainContainer .dashCoin::after {
+  content: "";
+  position: absolute;
+  inset: 34%;
+  border-radius: 50%;
+  background: #e5a800;
+}
+
+.dashboardMainContainer .dashCoin1 {
+  top: 16px;
+  right: 74px;
+  width: 16px;
+  height: 16px;
+  --dur: 5s;
+}
+.dashboardMainContainer .dashCoin2 {
+  top: 34px;
+  right: 24px;
+  width: 30px;
+  height: 30px;
+  opacity: 0.55;
+  --dur: 7s;
+  --delay: -2s;
+}
+.dashboardMainContainer .dashCoin3 {
+  top: 82px;
+  right: 100px;
+  width: 12px;
+  height: 12px;
+  --dur: 6s;
+  --delay: -1s;
+}
+.dashboardMainContainer .dashCoin4 {
+  top: 90px;
+  right: 34px;
+  width: 24px;
+  height: 24px;
+  --dur: 5.5s;
+  --delay: -3s;
+}
+.dashboardMainContainer .dashCoin5 {
+  top: 132px;
+  right: 78px;
+  width: 18px;
+  height: 18px;
+  opacity: 0.55;
+  --dur: 6.5s;
+  --delay: -4s;
+}
+.dashboardMainContainer .dashCoin6,
+.dashboardMainContainer .dashCoin7 {
+  display: none;
+}
+
+@keyframes dashCoinFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+/* ---------- stats: best score / tokens / withdrawable ---------- */
+.dashboardMainContainer .gameDataCont {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 14px 12px;
+  border: 1px solid #dde3f0;
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.dashboardMainContainer .gameDataCont h1 {
+  margin-bottom: 7px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8.5px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: #8a93b0;
+}
+
+.dashboardMainContainer .gameDataCont h3 {
+  display: flex;
+  align-items: center;
+  font-family: "Space Grotesk Variable", sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  color: #0b1330;
+}
+
+.dashboardMainContainer .gameDataCont h3 img {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+}
+
+.dashboardMainContainer .Withdrawable h3 {
+  font-family: "Inter Variable", system-ui, sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #4a5578;
+}
+
+.dashboardMainContainer .Withdrawable h3 img {
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+}
+
+/* ---------- rank tiles: games / global / ghana ---------- */
+.dashboardMainContainer .gamerankData {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.dashboardMainContainer .gamerankData > div {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 12px;
+  border: 1px solid #dde3f0;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.dashboardMainContainer .gamerankData h1 {
+  margin-bottom: 5px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8.5px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: #8a93b0;
+}
+
+.dashboardMainContainer .gamerankData h3 {
+  font-family: "Space Grotesk Variable", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0b1330;
+}
+
+/* ---------- recent activity ---------- */
+.dashboardMainContainer .recentActivity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.dashboardMainContainer .recentActivity h1 {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.dashboardMainContainer .recentActivity h3 {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #2b55d6;
+  cursor: pointer;
+}
+
+.dashboardMainContainer .recentColumns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 0;
+  border-bottom: 1px solid #dde3f0;
+}
+
+.dashboardMainContainer .recentColumns:last-child {
+  border-bottom: 0;
+}
+
+.dashboardMainContainer .recentColumnLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dashboardMainContainer .playArrow {
+  width: 38px;
+  height: 38px;
+}
+
+.dashboardMainContainer .TodayScore h1 {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.dashboardMainContainer .TodayScore h3 {
+  margin-top: 2px;
+  font-size: 11px;
+  font-weight: 400;
+  color: #4a5578;
+}
+
+.dashboardMainContainer .recentColumnRight h1 {
+  font-family: "Space Grotesk Variable", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- mobile bottom bar (the footer) ---------- */
+.dashboardMainContainer .bottomNav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: stretch;
+  height: calc(64px + env(safe-area-inset-bottom));
+  padding-bottom: env(safe-area-inset-bottom);
+  background: #ffffff;
+  border-top: 1px solid #dde3f0;
+}
+
+.dashboardMainContainer .tabLink {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #8a93b0;
+}
+
+.dashboardMainContainer .tabLink img {
+  width: 22px;
+  height: 22px;
+}
+
+.dashboardMainContainer .tabLink .iconOff {
+  opacity: 0.6;
+}
+
+.dashboardMainContainer .tabLink.active {
+  color: #0f2f8f;
+}
+
+.dashboardMainContainer .tabLink.active::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 28%;
+  right: 28%;
+  height: 2px;
+  border-radius: 0 0 2px 2px;
+  background: #0f2f8f;
+}
+
+.dashboardMainContainer .playTab {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.dashboardMainContainer .playTab img {
+  width: 72px;
+  height: 72px;
+  margin-top: -26px;
+}
+
+/* on/off icon swap - NavLink adds the "active" class for you */
+.dashboardMainContainer .iconOn {
+  display: none;
+}
+
+.dashboardMainContainer a.active .iconOn {
+  display: block;
+}
+
+.dashboardMainContainer a.active .iconOff {
+  display: none;
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .dashboardMainContainer .dashCoin {
+    animation: none;
+  }
+}
+
+/* =========================================================
+   480+  wider phones: same patterns, centred
+   ========================================================= */
+@media (min-width: 480px) and (max-width: 767.98px) {
+  .dashboardMainContainer {
+    padding-left: max(16px, calc((100vw - 560px) / 2));
+    padding-right: max(16px, calc((100vw - 560px) / 2));
+  }
+}
+
+/* =========================================================
+   768+  tablet and desktop: sidebar + top bar, no bottom bar
+   ========================================================= */
+@media (min-width: 768px) {
+  .dashboardMainContainer {
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr);
+    grid-template-rows: 64px 1fr;
+    gap: 0;
+    padding: 0;
+  }
+
+  .dashboardMainContainer .desktopOnly {
+    display: inline;
+  }
+
+  .dashboardMainContainer .mobileOnly,
+  .dashboardMainContainer .mobileHeader,
+  .dashboardMainContainer .welcomeName,
+  .dashboardMainContainer .bottomNav {
+    display: none;
+  }
+
+  /* ----- sidebar ----- */
+  .dashboardMainContainer .sideBar {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 18px 12px;
+    background: #ffffff;
+    border-right: 1px solid #dde3f0;
+  }
+
+  .dashboardMainContainer .sideLogo {
+    display: none;
+  }
+
+  .dashboardMainContainer .sideLogoSmall {
+    width: 36px;
+    height: 36px;
+    margin: 0 auto 18px;
+  }
+
+  .dashboardMainContainer .sideLink {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    height: 42px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #4a5578;
+    transition: background 0.15s ease;
+  }
+
+  .dashboardMainContainer .sideLink:hover {
+    background: #f5f7fc;
+  }
+
+  .dashboardMainContainer .sideLink img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .dashboardMainContainer .sideLink span:not(.badge) {
+    display: none;
+  }
+
+  .dashboardMainContainer .sideLink.active {
+    background: #e3eafb;
+    color: #0f2f8f;
+    font-weight: 600;
+    box-shadow: inset 3px 0 0 #0f2f8f;
+  }
+
+  .dashboardMainContainer .sideLink .badge {
+    position: absolute;
+    top: 3px;
+    right: 6px;
+    min-width: 16px;
+    height: 16px;
+    line-height: 16px;
+    font-size: 9px;
+  }
+
+  /* ----- top bar ----- */
+  .dashboardMainContainer .topBar {
+    grid-column: 2;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 24px;
+    background: #ffffff;
+    border-bottom: 1px solid #dde3f0;
+  }
+
+  .dashboardMainContainer .searchBox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 320px;
+    height: 38px;
+    padding: 0 12px;
+    border: 1px solid #dde3f0;
+    border-radius: 10px;
+    background: #ffffff;
+  }
+
+  .dashboardMainContainer .searchBox:focus-within {
+    border-color: #2b55d6;
+    box-shadow: 0 0 0 3px rgba(43, 85, 214, 0.2);
+  }
+
+  .dashboardMainContainer .searchBox img {
+    width: 17px;
+    height: 17px;
+  }
+
+  .dashboardMainContainer .searchBox input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font-family: "Inter Variable", system-ui, sans-serif;
+    font-size: 13px;
+    color: #0b1330;
+  }
+
+  .dashboardMainContainer .searchBox input::placeholder {
+    color: #8a93b0;
+  }
+
+  .dashboardMainContainer .topBarRight {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .dashboardMainContainer .bellContainer {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+
+  .dashboardMainContainer .bellContainer img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .dashboardMainContainer .bellContainer .badge {
+    position: absolute;
+    top: -8px;
+    right: -9px;
+    min-width: 17px;
+    height: 17px;
+    line-height: 17px;
+    font-size: 9.5px;
+    box-shadow: 0 0 0 2px #ffffff;
+  }
+
+  .dashboardMainContainer .accountMenu {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    cursor: pointer;
+  }
+
+  .dashboardMainContainer .avatar {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #2b55d6;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .dashboardMainContainer .accountMenu h3 {
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .dashboardMainContainer .accountMenu img {
+    width: 14px;
+    height: 14px;
+    opacity: 0.6;
+  }
+
+  /* ----- content: two columns ----- */
+  .dashboardMainContainer .dashContent {
+    grid-column: 2;
+    grid-row: 2;
+    width: 100%;
+    max-width: 1248px;
+    margin: 0 auto;
+    padding: 24px;
+    gap: 20px;
+  }
+
+  .dashboardMainContainer .dashLeft,
+  .dashboardMainContainer .dashRight {
+    gap: 16px;
+  }
+
+  /* shared white card look */
+  .dashboardMainContainer .gameDataCont > div,
+  .dashboardMainContainer .scoresChart,
+  .dashboardMainContainer .gamerankData,
+  .dashboardMainContainer .socialCard,
+  .dashboardMainContainer .recentActivityCont {
+    border: 1px solid #dde3f0;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(11, 19, 48, 0.04);
+  }
+
+  /* hero */
+  .dashboardMainContainer .blueBackgroudWidget {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "label label"
+      "num btn"
+      "clock clock";
+    align-content: center;
+    column-gap: 24px;
+    min-height: 160px;
+    padding: 26px 28px;
+    border-radius: 20px;
+  }
+
+  .dashboardMainContainer .blueBackgroudWidget > h1 {
+    grid-area: label;
+    margin-bottom: 10px;
+  }
+
+  .dashboardMainContainer .bignumberLeft {
+    grid-area: num;
+    align-self: center;
+    font-size: 46px;
+  }
+
+  .dashboardMainContainer .smallnumberLeft {
+    margin-left: 10px;
+    font-size: 21px;
+  }
+
+  .dashboardMainContainer .yellowPlaynow {
+    grid-area: btn;
+    align-self: center;
+    justify-self: start;
+    width: auto;
+    height: 48px;
+    padding: 0 24px;
+  }
+
+  .dashboardMainContainer .clockAndReset {
+    grid-area: clock;
+    margin: 14px 0 0;
+  }
+
+  .dashboardMainContainer .dashCoin6,
+  .dashboardMainContainer .dashCoin7 {
+    display: block;
+  }
+
+  .dashboardMainContainer .dashCoin1 {
+    top: 24px;
+    right: 42px;
+    width: 22px;
+    height: 22px;
+  }
+  .dashboardMainContainer .dashCoin2 {
+    top: 56px;
+    right: 118px;
+    width: 40px;
+    height: 40px;
+  }
+  .dashboardMainContainer .dashCoin3 {
+    top: 104px;
+    right: 62px;
+    width: 16px;
+    height: 16px;
+  }
+  .dashboardMainContainer .dashCoin4 {
+    top: 26px;
+    right: 190px;
+    width: 14px;
+    height: 14px;
+  }
+  .dashboardMainContainer .dashCoin5 {
+    top: 108px;
+    right: 210px;
+    width: 26px;
+    height: 26px;
+    opacity: 1;
+  }
+  .dashboardMainContainer .dashCoin6 {
+    top: 74px;
+    right: 260px;
+    width: 18px;
+    height: 18px;
+    opacity: 0.55;
+    --dur: 6s;
+    --delay: -2s;
+  }
+  .dashboardMainContainer .dashCoin7 {
+    top: 126px;
+    right: 128px;
+    width: 20px;
+    height: 20px;
+    opacity: 0.55;
+    --dur: 7s;
+    --delay: -5s;
+  }
+
+  /* stat cards: three separate cards, Tokens first */
+  .dashboardMainContainer .gameDataCont {
+    gap: 16px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .dashboardMainContainer .gameDataCont > div {
+    padding: 18px 18px 16px;
+    min-width: 0;
+  }
+
+  .dashboardMainContainer .Tokens {
+    order: 1;
+  }
+  .dashboardMainContainer .Withdrawable {
+    order: 2;
+  }
+  .dashboardMainContainer .bestScoreCont {
+    order: 3;
+  }
+
+  .dashboardMainContainer .gameDataCont h1 {
+    margin-bottom: 10px;
+    font-size: 10px;
+  }
+
+  .dashboardMainContainer .gameDataCont h3 {
+    font-size: 27px;
+  }
+
+  .dashboardMainContainer .gameDataCont h3 img {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+  }
+
+  .dashboardMainContainer .Withdrawable h3 {
+    min-height: 32px;
+    font-size: 15px;
+    color: #0b1330;
+  }
+
+  .dashboardMainContainer .Withdrawable h3 img {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+  }
+
+  .dashboardMainContainer .statNote {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    color: #4a5578;
+  }
+
+  /* chart */
+  .dashboardMainContainer .scoresChart {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 20px 20px 16px;
+  }
+
+  .dashboardMainContainer .scoresChartHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .dashboardMainContainer .scoresChartHeader h1 {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .dashboardMainContainer .avgPill {
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: #e3eafb;
+    color: #0f2f8f;
+    font-size: 11.5px;
+    font-weight: 700;
+  }
+
+  .dashboardMainContainer .scoresBars {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    align-items: stretch;
+    gap: 14px;
+    min-height: 230px;
+    margin-top: 18px;
+  }
+
+  .dashboardMainContainer .barColumn {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+
+  .dashboardMainContainer .bar {
+    width: 100%;
+    border-radius: 6px;
+    background: #e3eafb;
+  }
+
+  .dashboardMainContainer .barToday {
+    background: #0f2f8f;
+  }
+
+  .dashboardMainContainer .bar1 {
+    height: calc((100% - 22px) * 0.5);
+  }
+  .dashboardMainContainer .bar2 {
+    height: calc((100% - 22px) * 0.69);
+  }
+  .dashboardMainContainer .bar3 {
+    height: calc((100% - 22px) * 0.38);
+  }
+  .dashboardMainContainer .bar4 {
+    height: calc((100% - 22px) * 0.86);
+  }
+  .dashboardMainContainer .bar5 {
+    height: calc((100% - 22px) * 0.6);
+  }
+  .dashboardMainContainer .bar6 {
+    height: calc((100% - 22px) * 0.79);
+  }
+  .dashboardMainContainer .bar7 {
+    height: calc((100% - 22px) * 1);
+  }
+
+  .dashboardMainContainer .barColumn h3 {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 9.5px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-align: center;
+    color: #8a93b0;
+  }
+
+  /* rank card */
+  .dashboardMainContainer .gamerankData {
+    grid-template-columns: 1fr 1fr;
+    gap: 0 20px;
+    padding: 18px 20px;
+  }
+
+  .dashboardMainContainer .gamerankData h1.yourRankLabel::first-letter {
+    text-transform: none;
+  }
+
+  .dashboardMainContainer .gamerankData h1.yourRankLabel {
+    text-transform: none;
+    display: block;
+    grid-column: 1 / -1;
+    margin-bottom: 12px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    color: #8a93b0;
+  }
+
+  .dashboardMainContainer .games {
+    display: none !important;
+  }
+
+  .dashboardMainContainer .gamerankData > div {
+    flex-direction: column-reverse;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .dashboardMainContainer .CountryRank {
+    padding-left: 20px !important;
+    border-left: 1px solid #dde3f0 !important;
+  }
+
+  .dashboardMainContainer .gamerankData h1 {
+    margin: 4px 0 0;
+    font-family: "Inter Variable", system-ui, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0;
+    color: #4a5578;
+    text-transform: lowercase;
+  }
+
+  .dashboardMainContainer .gamerankData h1::first-letter {
+    text-transform: uppercase;
+  }
+
+  .dashboardMainContainer .gamerankData h3 {
+    font-size: 30px;
+  }
+
+  /* social card */
+  .dashboardMainContainer .socialCard {
+    display: block;
+    padding: 18px 20px 8px;
+  }
+
+  .dashboardMainContainer .socialCard h1 {
+    margin-bottom: 4px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .dashboardMainContainer .socialRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 0;
+    border-top: 1px solid #dde3f0;
+  }
+
+  .dashboardMainContainer .socialRow:first-of-type {
+    border-top: 0;
+  }
+
+  .dashboardMainContainer .socialRow h3 {
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  /* recent activity card */
+  .dashboardMainContainer .recentActivityCont {
+    flex: 1;
+    padding: 18px 20px 8px;
+  }
+
+  .dashboardMainContainer .recentActivity {
+    margin-bottom: 6px;
+  }
+
+  .dashboardMainContainer .recentActivity h3 {
+    display: none;
+  }
+
+  .dashboardMainContainer .recentColumns.desktopRow {
+    display: flex;
+  }
+
+  .dashboardMainContainer .TodayScore h3 {
+    font-size: 11.5px;
+  }
+}
+
+/* =========================================================
+   768 - 1023  tablet: icon-only sidebar, right column goes under
+   ========================================================= */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .dashboardMainContainer .dashContent {
+    max-width: 760px;
+  }
+
+  .dashboardMainContainer .dashRight {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .dashboardMainContainer .recentActivityCont {
+    grid-column: 1 / -1;
+  }
+
+  .dashboardMainContainer .scoresChart {
+    flex: none;
+  }
+
+  .dashboardMainContainer .scoresBars {
+    min-height: 210px;
+  }
+}
+
+/* =========================================================
+   1024+  desktop: full sidebar, two columns
+   ========================================================= */
+@media (min-width: 1024px) {
+  .dashboardMainContainer {
+    grid-template-columns: 224px minmax(0, 1fr);
+  }
+
+  .dashboardMainContainer .sideBar {
+    padding: 20px 12px;
+  }
+
+  .dashboardMainContainer .sideLogo {
+    display: block;
+    padding: 0 8px;
+    margin-bottom: 20px;
+  }
+
+  .dashboardMainContainer .sideLogoSmall {
+    display: none;
+  }
+
+  .dashboardMainContainer .sideLink {
+    justify-content: flex-start;
+    padding: 0 12px;
+  }
+
+  .dashboardMainContainer .sideLink span:not(.badge) {
+    display: inline;
+  }
+
+  .dashboardMainContainer .sideLink .badge {
+    position: static;
+    margin-left: auto;
+    min-width: 18px;
+    height: 18px;
+    line-height: 18px;
+    font-size: 10px;
+  }
+
+  .dashboardMainContainer .dashContent {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 296px;
+    align-items: stretch;
+  }
+
+  .dashboardMainContainer .dashRight {
+    display: flex;
+  }
+
+  .dashboardMainContainer .scoresChart {
+    flex: 1;
+  }
+}
+
+/* smaller laptops: tighten the three stat cards a little */
+@media (min-width: 1024px) and (max-width: 1199.98px) {
+  /* narrower right column + fewer coins so nothing collides with the button */
+  .dashboardMainContainer .dashContent {
+    grid-template-columns: minmax(0, 1fr) 264px;
+  }
+
+  .dashboardMainContainer .dashCoin2,
+  .dashboardMainContainer .dashCoin5,
+  .dashboardMainContainer .dashCoin6,
+  .dashboardMainContainer .dashCoin7 {
+    display: none;
+  }
+
+  .dashboardMainContainer .dashCoin4 {
+    right: 70px;
+    top: 40px;
+  }
+
+  .dashboardMainContainer .gameDataCont {
+    gap: 12px;
+  }
+
+  .dashboardMainContainer .gameDataCont > div {
+    padding: 16px 12px;
+  }
+
+  .dashboardMainContainer .gameDataCont h3 {
+    font-size: 23px;
+  }
+
+  .dashboardMainContainer .Withdrawable h3 {
+    font-size: 13px;
+  }
+}

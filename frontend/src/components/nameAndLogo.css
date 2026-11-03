@@ -1,0 +1,39 @@
+.iconAndName {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.yellowQuoteLanding {
+  color: #e5a800;
+}
+
+.iconAndName img {
+  display: block;
+  width: 28px;
+  height: 28px;
+  border-radius: 7px;
+}
+
+.iconAndName h1 {
+  font-family: "Space Grotesk Variable", "Space Grotesk", system-ui, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #0a1f5c;
+}
+
+@media (min-width: 768px) {
+  .desktopNav .iconAndName {
+    gap: 12px;
+  }
+  .desktopNav .iconAndName img {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+  }
+  .desktopNav .iconAndName h1 {
+    font-size: 20px;
+  }
+}
